@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
+import 'bulma/css/bulma.css';
+import ClassList from "./ClassList";
 
 class App extends Component {
   constructor() {
@@ -20,7 +22,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>HELLO THERE</h1>
+        <div className="columns">
+          <ClassList students={this.state.students}/>
+          <div className="column is-half">Auto</div>
+          <div className="column is-one-quarter has-background-danger">is-one-quarter</div>
+        </div>
       </div>
     );
   }
