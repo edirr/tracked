@@ -1,0 +1,20 @@
+{
+  "name": "tracked",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Eric Dirr ",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "pg": "^7.9.0",
+    "sequelize": "^5.1.0"
+  },
+  "scripts": {
+    "dev": "nodemon",
+    "db:init": "dropdb --if-exists tracked_db && createdb tracked_db",
+    "db:reset": "./scripts/resetDB",
+    "db:seed": "./scripts/seedDB"
+  }
+}

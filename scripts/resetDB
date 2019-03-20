@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+//getting db connection from sequelize (models exports)
+//deconstructing of db 
+const { db } = require('../models');
+
+//async call (since we are awaiting a promise)
+//dropping and re-adding tables
+(async () => {
+  await db.sync({ force: true });
+  db.close();
+})();

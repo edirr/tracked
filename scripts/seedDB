@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+
+//grab everything from models, including the DB connection
+const { Student, MathTest, ElaTest, SSTest, db } = require('../models');
+const { students, mathTests, elaTests, ssTests } = require('../data');
+
+
+(async () => {
+  // insert colors
+  /* await Color.bulkCreate() */
+
+  // first insert the houses
+  //bulkcreate is expecting an array of objects
+  //taking array from data file and deconstructing
+  //then constructoring it as an object 
+//   await House.bulkCreate(houses.map(([name, img_url]) => ({ name, img_url })));
+
+  // then insert the students
+  try{
+  await Student.bulkCreate(students.map(([fname, lname, age]) => ({fname, lname, age})));
+  await MathTest.bulkCreate(mathTests.map(([name, grade, date, studentId]) => ({name, grade, date, studentId})));
+  await ElaTest.bulkCreate(elaTests.map(([name, grade, date, studentId]) => ({name, grade, date, studentId})));
+  await SSTest.bulkCreate(ssTests.map(([name, grade, date, studentId]) => ({name, grade, date, studentId})));
+
+  db.close();
+  }
+  catch(e){
+      console.log(e)
+  }
+})();
