@@ -8,7 +8,7 @@ const elaTestRouter = require("./routes/elaTestRouter");
 const ssTestRouter = require("./routes/ssTestRouter");
 
 // init a port
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 // set up express
 const app = express();
