@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import StudentTile from "../StudentTile";
 
 class ClassList extends Component {
   constructor() {
@@ -10,8 +11,9 @@ class ClassList extends Component {
   }
 
   createClassList(){
-    const classList = this.props.students < 1 ? "" : this.props.students.map((student, i)=>{
-      return <div key={i}>{student.fname} {student.lname}</div>
+    const classList = this.props.students < 1 ? "" : this.props.students.map((student)=>{
+      return <StudentTile id={student.id} fname={student.fname} lname={student.lname} sendStudentId={this.props.sendStudentId}/>
+    //   <div key={i}>{student.fname} {student.lname}</div>
     });
     return classList
   }
