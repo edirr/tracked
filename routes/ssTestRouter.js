@@ -78,7 +78,7 @@ ssTestRouter.get("/student/:id", async (req, res) => {
     const id = Number.parseInt(req.params.id, 10);
     const ssTests = await SSTest.findAll({
       where: { student_id: id },
-      rejectOnEmpty: true
+      // rejectOnEmpty: true
     });
     res.send(ssTests);
   } catch (e) {

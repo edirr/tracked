@@ -72,18 +72,6 @@ studentRouter.delete("/:id", async (req, res) => {
   res.send({});
 });
 
-//All math tests for one student
-studentRouter.get("/:id/tests/math", async (req, res) => {
-  try {
-    const id = Number.parseInt(req.params.id, 10);
-    const mathTests = await MathTest.findAll({
-      where: { student_id: id },
-      rejectOnEmpty: true
-    });
-    res.send(mathTests);
-  } catch (e) {
-    console.log(e);
-  }
-});
+
 
 module.exports = studentRouter;

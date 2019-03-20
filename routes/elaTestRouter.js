@@ -78,7 +78,7 @@ elaTestRouter.get("/student/:id", async (req, res) => {
     const id = Number.parseInt(req.params.id, 10);
     const elaTests = await ElaTest.findAll({
       where: { student_id: id },
-      rejectOnEmpty: true
+      // rejectOnEmpty: true
     });
     res.send(elaTests);
   } catch (e) {

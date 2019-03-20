@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 
-class CreateStudentForm extends Component {
+class CreateTestForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fname: "",
-      lname: "",
-      age: ""
+      name: "",
+      grade: "",
+      date: "",
+      studentId: null
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,59 +20,67 @@ class CreateStudentForm extends Component {
 
     // set the state as needed
     this.setState({
-      [name]: value
+      [name]: value,
+      studentId: this.props.studentId
     });
   }
 
   handleSubmit(event) {
     console.log(event);
     event.preventDefault();
-    const { newStudentSubmitAction } = this.props;
+    const { newTestSubmitAction } = this.props;
 
     // const { thing2, thing3, ...good } = this.state
-    newStudentSubmitAction(this.state);
+    newTestSubmitAction(this.state);
+
+    this.setState({      
+    name: "",
+    grade: "",
+    date: "",
+    studentId: null});
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <p>Add Student</p>
+        <p>Add {this.props.subject} Score</p>
         <div className="field">
-          <label className="label">First Name</label>
+          <label className="label">Test Name</label>
           <div className="control">
             <input
               onChange={this.updateState}
-              name="fname"
+              name="name"
               className="input"
               type="text"
-              value={this.state.fname}
-              placeholder="Alex Smith"
+              value={this.state.name}
+              placeholder={`Unit 1 ${this.props.subject} Test`}
+            />
+          </div>
+        </div>
+
+        <div className="field">
+          <label className="label">Grade</label>
+          <div className="control">
+            <input
+              onChange={this.updateState}
+              name="grade"
+              className="input"
+              type="text"
+              value={this.state.grade}
+              placeholder="95"
             />
           </div>
         </div>
         <div className="field">
-          <label className="label">Last Name</label>
+          <label className="label">Date</label>
           <div className="control">
             <input
               onChange={this.updateState}
-              name="lname"
+              name="date"
               className="input"
               type="text"
-              value={this.state.lname}
-              placeholder="Alex Smith"
-            />
-          </div>
-        </div>
-        <div className="field">
-          <label className="label">Age</label>
-          <div className="control">
-            <input
-              onChange={this.updateState}
-              name="age"
-              className="input"
-              type="text"
-              value={this.state.age}
-              placeholder="12"
+              value={this.state.date}
+              placeholder="2018-10-15"
             />
           </div>
         </div>
@@ -83,4 +92,4 @@ class CreateStudentForm extends Component {
   }
 }
 
-export default CreateStudentForm;
+export default CreateTestForm;

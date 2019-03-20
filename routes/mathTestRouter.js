@@ -50,9 +50,9 @@ mathTestRouter.put("/:id", async (req, res) => {
 mathTestRouter.post("/", async (req, res) => {
   try {
     // receiving from the body
-    const { name, grade, date } = req.body;
+    const { name, grade, date, studentId } = req.body;
 
-    const newMathTest = await MathTest.create({ name, grade, date });
+    const newMathTest = await MathTest.create({ name, grade, date, studentId });
     res.send(newMathTest);
   } catch (e) {
     console.log(e);
@@ -78,7 +78,7 @@ mathTestRouter.get("/student/:id", async (req, res) => {
     const id = Number.parseInt(req.params.id, 10);
     const mathTests = await MathTest.findAll({
       where: { student_id: id },
-      rejectOnEmpty: true
+      // rejectOnEmpty: true
     });
     res.send(mathTests);
   } catch (e) {
