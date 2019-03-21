@@ -1,4 +1,9 @@
-.student-tile{
-margin: 1rem;
-display: block;
+.student-tile {
+  margin: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.student-name {
+  justify-self: flex-start;
 }

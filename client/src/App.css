@@ -4,5 +4,8 @@
 
 .subject button{
   margin:1.3rem .8rem .8rem 0;
-  width: 15%;
+}
+
+.form-section{
+padding-right:2rem !important;
 }

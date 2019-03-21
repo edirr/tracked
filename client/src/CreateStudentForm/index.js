@@ -30,6 +30,12 @@ class CreateStudentForm extends Component {
 
     // const { thing2, thing3, ...good } = this.state
     newStudentSubmitAction(this.state);
+
+    this.setState({
+        fname: "",
+        lname: "",
+        age: ""
+    })
   }
 
   render() {

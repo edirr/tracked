@@ -4,6 +4,7 @@ import "bulma/css/bulma.css";
 import ClassList from "./ClassList";
 import CreateStudentForm from "./CreateStudentForm";
 import CreateTestForm from "./CreateTestForm";
+import EditModal from "./EditModal"
 
 class App extends Component {
   constructor() {
@@ -14,10 +15,13 @@ class App extends Component {
       mathTests: "",
       elaTests: "",
       ssTests: "",
-      form_subject: ""
+      form_subject: "",
+      oneStudent: "",
+      editModal: false
     };
     this.sendStudentId = this.sendStudentId.bind(this);
     this.getAllStudents = this.getAllStudents.bind(this);
+    this.getOneStudent = this.getOneStudent.bind(this);
     this.getStudentMathTests = this.getStudentMathTests.bind(this);
     this.getStudentElaTests = this.getStudentElaTests.bind(this);
     this.getStudentSSTests = this.getStudentSSTests.bind(this);
@@ -25,7 +29,10 @@ class App extends Component {
     this.newMathTestSubmitAction = this.newMathTestSubmitAction.bind(this);
     this.newElaTestSubmitAction = this.newElaTestSubmitAction.bind(this);
     this.newSSTestSubmitAction = this.newSSTestSubmitAction.bind(this);
+    this.deleteStudent = this.deleteStudent.bind(this);
+    this.updateStudent = this.updateStudent.bind(this);
     this.formSelect = this.formSelect.bind(this);
+    this.toggleEditModal = this.toggleEditModal.bind(this);
   }
 
   componentDidMount() {
@@ -37,6 +44,16 @@ class App extends Component {
       .then(data => {
         this.setState({
           students: data
+        });
+      });
+  }
+
+  getOneStudent(id) {
+    fetch(`/students/${id}`)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          oneStudent: data
         });
       });
   }
@@ -105,6 +122,34 @@ class App extends Component {
     this.getStudentSSTests();
   }
 
+  async deleteStudent(id) {
+    await fetch(`/students/${id}`, {
+      method: "DELETE"
+    })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+
+    this.getAllStudents();
+  }
+
+  async updateStudent(updatedStudent, id) {
+    await fetch(`/students/${id}`, {
+      method: "PUT",
+      headers: {
+        Accept:         'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedStudent)
+    })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+
+    this.getAllStudents();
+  }
+
+
 
   getStudentMathTests() {
     fetch(`/tests/math/student/${this.state.studentId}`)
@@ -142,6 +187,12 @@ class App extends Component {
     this.getStudentSSTests();
   }
 
+  toggleEditModal(){
+    this.setState({
+      editModal: !this.state.editModal
+    });
+  }
+
   formSelect(){
     switch(true) {
       // case (desc.includes("overcast")|| desc.includes("scattered")):
@@ -159,15 +210,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <EditModal updateStudent={this.updateStudent}  oneStudent={this.state.oneStudent} editModal={this.state.editModal} toggleEditModal={this.toggleEditModal}/>
         <div className="columns">
           <ClassList
             students={this.state.students}
             sendStudentId={this.sendStudentId}
+            deleteStudent={this.deleteStudent}
             studentId={this.state.studentId}
+            getOneStudent={this.getOneStudent}
+            toggleEditModal={this.toggleEditModal}
           />
           <div className="column is-half">Auto</div>
 
-          <div className="column is-one-quarter has-background-danger">
+          <div className="column is-one-quarter has-background-danger form-section">
             <CreateStudentForm newStudentSubmitAction={this.newStudentSubmitAction}/>
             <div className="subject">
               <button className={`button ${this.state.form_subject === "ela" ? 'is-info' : 'is-primary'}`} onClick={()=>this.setState({form_subject: "ela"})} name="ela" value="ela">ELA
