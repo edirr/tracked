@@ -7,7 +7,7 @@ class CreateTestForm extends Component {
       name: "",
       grade: "",
       date: "",
-      studentId: null
+      studentId: ""
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,7 +37,7 @@ class CreateTestForm extends Component {
     name: "",
     grade: "",
     date: "",
-    studentId: null});
+    studentId: ""});
   }
 
   render() {

@@ -50,9 +50,9 @@ ssTestRouter.put("/:id", async (req, res) => {
 ssTestRouter.post("/", async (req, res) => {
   try {
     // receiving from the body
-    const { name, grade, date } = req.body;
+    const { name, grade, date, studentId } = req.body;
 
-    const newSSTest = await SSTest.create({ name, grade, date });
+    const newSSTest = await SSTest.create({ name, grade, date, studentId });
     res.send(newSSTest);
   } catch (e) {
     console.log(e);

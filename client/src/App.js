@@ -4,7 +4,8 @@ import "bulma/css/bulma.css";
 import ClassList from "./ClassList";
 import CreateStudentForm from "./CreateStudentForm";
 import CreateTestForm from "./CreateTestForm";
-import EditModal from "./EditModal"
+import EditModal from "./EditModal";
+import StudentChart from "./StudentChart";
 
 class App extends Component {
   constructor() {
@@ -204,7 +205,7 @@ class App extends Component {
       case (this.state.form_subject === "ss"):
         return <CreateTestForm subject="SS" studentId={this.state.studentId} newTestSubmitAction={this.newSSTestSubmitAction} />
       default:
-        return <CreateTestForm subject="ELA" studentId={this.state.studentId} newTestSubmitAction={this.newElaTestSubmitAction} />;
+        return <CreateTestForm subject="Math" studentId={this.state.studentId} newTestSubmitAction={this.newMathTestSubmitAction} />;
     }
   }
   render() {
@@ -220,7 +221,9 @@ class App extends Component {
             getOneStudent={this.getOneStudent}
             toggleEditModal={this.toggleEditModal}
           />
-          <div className="column is-half">Auto</div>
+          <div className="column is-half">
+            <StudentChart mathTests={this.state.mathTests} elaTests={this.state.elaTests} ssTests={this.state.ssTests} />
+          </div>
 
           <div className="column is-one-quarter has-background-danger form-section">
             <CreateStudentForm newStudentSubmitAction={this.newStudentSubmitAction}/>

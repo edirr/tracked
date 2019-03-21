@@ -50,9 +50,9 @@ elaTestRouter.put("/:id", async (req, res) => {
 elaTestRouter.post("/", async (req, res) => {
   try {
     // receiving from the body
-    const { name, grade, date } = req.body;
+    const { name, grade, date, studentId } = req.body;
 
-    const newElaTest = await ElaTest.create({ name, grade, date });
+    const newElaTest = await ElaTest.create({ name, grade, date, studentId });
     res.send(newElaTest);
   } catch (e) {
     console.log(e);
