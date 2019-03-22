@@ -1,9 +1,31 @@
 .student-tile {
   margin: 1rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  /* background: #FF3B3F !important; */
 }
 
-.student-name {
-  justify-self: flex-start;
+.student-tile :hover{
+  /* background: #ff6265 !important ; */
 }
+
+.active-btn{
+/* background: #CAEBF2; */
+}
+/* .student-name {
+  justify-self: flex-start;
+} */
+.student-buttons{
+align-content: center;
+display: flex;
+
+}
+
+.edit-btn{
+color:#696969;
+margin-right: .3rem;
+}
+
+.edit-btn :hover{
+  color:#808080;
+  }

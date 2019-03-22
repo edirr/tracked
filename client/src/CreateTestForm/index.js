@@ -26,11 +26,12 @@ class CreateTestForm extends Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault();
     if(this.state.studentId === ""){
       return
     }
     console.log(event);
-    event.preventDefault();
+
     const { newTestSubmitAction } = this.props;
 
     // const { thing2, thing3, ...good } = this.state

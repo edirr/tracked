@@ -6,6 +6,7 @@ import CreateStudentForm from "./CreateStudentForm";
 import CreateTestForm from "./CreateTestForm";
 import EditModal from "./EditModal";
 import StudentChart from "./StudentChart";
+import NavBar from "./NavBar";
 
 class App extends Component {
   constructor() {
@@ -211,6 +212,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <NavBar/>
       <EditModal updateStudent={this.updateStudent}  oneStudent={this.state.oneStudent} editModal={this.state.editModal} toggleEditModal={this.toggleEditModal}/>
         <div className="columns">
           <ClassList
@@ -225,7 +227,7 @@ class App extends Component {
             <StudentChart mathTests={this.state.mathTests} elaTests={this.state.elaTests} ssTests={this.state.ssTests} />
           </div>
 
-          <div className="column is-one-quarter has-background-danger form-section">
+          <div className="column is-one-quarter has-background-light form-section">
             <CreateStudentForm newStudentSubmitAction={this.newStudentSubmitAction}/>
             <div className="subject">
               <button className={`button ${this.state.form_subject === "ela" ? 'is-info' : 'is-primary'}`} onClick={()=>this.setState({form_subject: "ela"})} name="ela" value="ela">ELA
