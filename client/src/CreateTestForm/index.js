@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./style.css";
 
 class CreateTestForm extends Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class CreateTestForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <p>Add {this.props.subject} Score</p>
+        <p className="add-subject">Add {this.props.subject} Score</p>
         <div className="field">
           <label className="label">Test Name</label>
           <div className="control">

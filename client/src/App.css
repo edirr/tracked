@@ -1,6 +1,6 @@
 html{
   box-sizing: border-box;
-  height:100vh;
+
 }
 .columns{
   height:100%;
@@ -8,13 +8,19 @@ html{
 }
 
 .subject button{
-  margin:1.3rem .8rem .8rem 0;
+  margin:.8rem .8rem .8rem 0;
+}
+.subject{
+  display: flex;
+  justify-content: center;
 }
 
 .form-section{
 padding-right:2rem !important;
+background: rgb(209, 230, 250);
 }
 
-body{
-  /* background: lightgray; */
+hr{
+  border: .1rem solid darkgray !important;
+  margin: 1rem 0 0 0 !important;
 }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./style.css";
 
 class CreateStudentForm extends Component {
   constructor(props) {
@@ -44,7 +45,7 @@ class CreateStudentForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <p>Add Student</p>
+        <p className="add-student">Add Student</p>
         <div className="field">
           <label className="label">First Name</label>
           <div className="control">
@@ -54,7 +55,7 @@ class CreateStudentForm extends Component {
               className="input"
               type="text"
               value={this.state.fname}
-              placeholder="Alex Smith"
+              placeholder="John"
             />
           </div>
         </div>
@@ -67,7 +68,7 @@ class CreateStudentForm extends Component {
               className="input"
               type="text"
               value={this.state.lname}
-              placeholder="Alex Smith"
+              placeholder="Smith"
             />
           </div>
         </div>

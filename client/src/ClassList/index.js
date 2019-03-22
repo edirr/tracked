@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import StudentTile from "../StudentTile";
+import "./style.css";
 
 class ClassList extends Component {
   constructor() {
@@ -19,8 +20,12 @@ class ClassList extends Component {
 
   render() {
     return (
-      <div className="column is-one-quarter class-list">
-        {this.createClassList()}
+      <div className="column is-3 class-section">
+      <h1 className="class-heading">Class List</h1>
+      <div className="class-list">
+      {this.createClassList()}
+      </div>
+
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./style.css";
 
 class EditModal extends Component {
   constructor(props) {
@@ -55,9 +56,9 @@ class EditModal extends Component {
     return (
       <div class={`modal ${this.props.editModal ? "is-active" : ""}`}>
         <div class="modal-background" />
-        <div class="modal-content">
+        <div class="modal-content content">
           <form onSubmit={this.handleSubmit}>
-            <p>Edit Student</p>
+            <p className="heading">Edit Student</p>
             <div className="field">
               <label className="label">First Name</label>
               <div className="control">

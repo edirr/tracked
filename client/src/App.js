@@ -8,6 +8,7 @@ import EditModal from "./EditModal";
 import StudentChart from "./StudentChart";
 import NavBar from "./NavBar";
 
+
 class App extends Component {
   constructor() {
     super();
@@ -187,6 +188,7 @@ class App extends Component {
     this.getStudentMathTests();
     this.getStudentElaTests();
     this.getStudentSSTests();
+    this.getOneStudent(this.state.studentId);
   }
 
   toggleEditModal(){
@@ -223,12 +225,13 @@ class App extends Component {
             getOneStudent={this.getOneStudent}
             toggleEditModal={this.toggleEditModal}
           />
-          <div className="column is-half">
-            <StudentChart mathTests={this.state.mathTests} elaTests={this.state.elaTests} ssTests={this.state.ssTests} />
+          <div className="column is-6">
+            <StudentChart oneStudent={this.state.oneStudent} mathTests={this.state.mathTests} elaTests={this.state.elaTests} ssTests={this.state.ssTests} />
           </div>
 
-          <div className="column is-one-quarter has-background-light form-section">
+          <div className="column is-one-quarter form-section">
             <CreateStudentForm newStudentSubmitAction={this.newStudentSubmitAction}/>
+            <hr/>
             <div className="subject">
               <button className={`button ${this.state.form_subject === "ela" ? 'is-info' : 'is-primary'}`} onClick={()=>this.setState({form_subject: "ela"})} name="ela" value="ela">ELA
               </button>

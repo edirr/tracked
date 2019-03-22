@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Line } from "react-chartjs-2";
+import "./style.css";
 
 class StudentChart extends Component {
   constructor(props) {
@@ -85,9 +86,9 @@ makeTicks(chartData){
           labels: [],
           data: [],
           showLine: true,
-          backgroundColor: "yellow",
+          backgroundColor: "gold",
           fill: false,
-          borderColor: "yellow",
+          borderColor: "gold",
           lineTension: 0.2
         }
       ]
@@ -150,6 +151,7 @@ this.makeTicks(chartData);
             chartData.datasets[2].labels.push(test.name)
           );
 
+          const name = this.props.oneStudent < 1 ? "Student Scores" : `${this.props.oneStudent.fname} ${this.props.oneStudent.lname} `
     return (
       <div className="chart">
         <Line
@@ -158,13 +160,18 @@ this.makeTicks(chartData);
             maintainAspectRatio: true,
             title: {
               display: true,
-              text: "Student Scores",
-              fontSize: 25
+              text: `${name}`,
+              fontSize: 25,
+              fontColor: "black"
             },
             showLine: true,
             legend: {
               display: true,
-              position: "right"
+              position: "right",
+              labels:{
+                fontColor:"black",
+                fontSize: 13
+              }
             },
             tooltips: {
               callbacks: {
@@ -181,7 +188,7 @@ this.makeTicks(chartData);
                   distribution: "series",
                   ticks: {
                     autoSkip: false,
-                    display: false
+                    display: false,
                   }
                   // type: "time",
                 }
@@ -190,13 +197,16 @@ this.makeTicks(chartData);
                 {
                   scaleLabel: {
                     display: true,
-                    labelString: "Grade"
+                    labelString: "Grade",
+                    fontColor: "black",
+                    fontSize: 16
                   },
                   display: true,
                   // stacked: true,
                   ticks: {
                     min: 60,
-                    max: 100
+                    max: 100,
+                    fontColor: "black"
                   }
                 }
               ]

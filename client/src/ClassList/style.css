@@ -1,0 +1,22 @@
+.class-list {
+  height: 87vh;
+  display: flex;
+  overflow-y: scroll;
+  flex-direction: column;
+}
+.class-section {
+  /* display: flex; */
+}
+/* .scroll-box{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 100%;
+} */
+
+.class-heading{
+font-weight: bold;
+font-size: 1.5rem;
+color: black;
+text-align: center;
+}
