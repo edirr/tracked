@@ -12,6 +12,8 @@
     "sequelize": "^5.1.0"
   },
   "scripts": {
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && yarn && yarn build",
     "dev": "nodemon",
     "db:init": "dropdb --if-exists tracked_db && createdb tracked_db",
     "db:reset": "./scripts/resetDB",

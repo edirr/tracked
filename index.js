@@ -19,7 +19,8 @@ app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static(path.join('public')));
+// app.use(express.static(path.join('public')));
+app.use(express.static(path.join(__dirname,"client/build")))
 
 app.use('/students', studentRouter);
 app.use('/tests/math', mathTestRouter);
