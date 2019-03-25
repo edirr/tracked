@@ -3,8 +3,9 @@ const Sequelize = require('sequelize');
 //Connecting to the database and set up some behavior
 //db needs to be created in SQL 
 //want underscored and returning values
-const db = new Sequelize({
-  database: 'tracked_db',
+const url = process.env.DATABASE_URL
+const db = new Sequelize(url, {
+  // database: 'tracked_db',
   dialect:  'postgres',
   define:   {
     underscored: true,
