@@ -3,9 +3,9 @@ const Sequelize = require('sequelize');
 //Connecting to the database and set up some behavior
 //db needs to be created in SQL 
 //want underscored and returning values
-const url = process.env.DATABASE_URL
-const db = new Sequelize(url, {
-  // database: 'tracked_db',
+// const url = process.env.DATABASE_URL
+const db = new Sequelize({
+  database: 'tracked_db',
   dialect:  'postgres',
   define:   {
     underscored: true,
@@ -14,14 +14,14 @@ const db = new Sequelize(url, {
 });
 
 
-// House has many students
+
 const User = db.define('user', {
   name:    Sequelize.STRING(64),
   email:    Sequelize.STRING(64),
   password:  Sequelize.STRING(64),
 });
 
-// Student must have one house
+
 const Student = db.define('student', {
   fname: Sequelize.STRING(32),
   lname: Sequelize.STRING(32),

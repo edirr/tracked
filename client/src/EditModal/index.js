@@ -36,27 +36,41 @@ class EditModal extends Component {
       })
   }
   handleSubmit(event) {
-    console.log(event);
     event.preventDefault();
-    const { updateStudent } = this.props;
-    const { id } = this.props.oneStudent;
+    if(this.state.fname !== "" && this.state.lname !== "" && this.state.age !== "" ){
+      const { updateStudent } = this.props;
+      const { id } = this.props.oneStudent;
+  
+      // const { thing2, thing3, ...good } = this.state
+      updateStudent(this.state, id);
+  
+      this.setState({
+          fname: "",
+          lname: "",
+          age: ""
+      })
+      this.props.toggleEditModal();
+    }
+    // event.preventDefault();
+    // const { updateStudent } = this.props;
+    // const { id } = this.props.oneStudent;
 
-    // const { thing2, thing3, ...good } = this.state
-    updateStudent(this.state, id);
+    // // const { thing2, thing3, ...good } = this.state
+    // updateStudent(this.state, id);
 
-    this.setState({
-        fname: "",
-        lname: "",
-        age: ""
-    })
-    this.props.toggleEditModal();
+    // this.setState({
+    //     fname: "",
+    //     lname: "",
+    //     age: ""
+    // })
+    // this.props.toggleEditModal();
   }
 
   render() {
     return (
-      <div class={`modal ${this.props.editModal ? "is-active" : ""}`}>
-        <div class="modal-background" />
-        <div class="modal-content content">
+      <div className={`modal ${this.props.editModal ? "is-active" : ""}`}>
+        <div className="modal-background" />
+        <div className="modal-content content">
           <form onSubmit={this.handleSubmit}>
             <p className="heading">Edit Student</p>
             <div className="field">
@@ -103,7 +117,7 @@ class EditModal extends Component {
             </div>
           </form>
         </div>
-        <button class="modal-close is-large" aria-label="close" onClick={()=> this.props.toggleEditModal()} />
+        <button className="modal-close is-large" aria-label="close" onClick={()=> this.props.toggleEditModal()} />
       </div>
     );
   }

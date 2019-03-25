@@ -26,20 +26,20 @@ class CreateStudentForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    if(this.state.fname === "" || this.state.lname === "" || this.state.age === ""){
-      return
+    if(this.state.fname !== "" && this.state.lname !== "" && this.state.age !== "" ){
+
+      const { newStudentSubmitAction } = this.props;
+
+      // const { thing2, thing3, ...good } = this.state
+      newStudentSubmitAction(this.state);
+  
+      this.setState({
+          fname: "",
+          lname: "",
+          age: ""
+      })
     }
-    console.log(event);
-    const { newStudentSubmitAction } = this.props;
-
-    // const { thing2, thing3, ...good } = this.state
-    newStudentSubmitAction(this.state);
-
-    this.setState({
-        fname: "",
-        lname: "",
-        age: ""
-    })
+    
   }
 
   render() {
