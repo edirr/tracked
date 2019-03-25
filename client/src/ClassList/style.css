@@ -1,5 +1,5 @@
 .class-list {
-  height: 87vh;
+  height: 85vh;
   display: flex;
   overflow-y: scroll;
   flex-direction: column;

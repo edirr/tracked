@@ -6,7 +6,7 @@ const studentRouter = express.Router();
 studentRouter.get("/", async (req, res) => {
   try {
     const students = await Student.findAll({
-      rejectOnEmpty: true
+      // rejectOnEmpty: true
     });
     res.send(students);
   } catch (e) {
@@ -18,8 +18,8 @@ studentRouter.get("/:id", async (req, res) => {
   try {
     const id = Number.parseInt(req.params.id, 10);
     const student = await Student.findOne({
-      where: { id },
-      rejectOnEmpty: true
+      where: { id }
+      // rejectOnEmpty: true
     });
     res.send(student);
   } catch (e) {
@@ -38,7 +38,9 @@ studentRouter.put("/:id", async (req, res) => {
         where: { id },
         limit: 1,
         rejectOnEmpty: true,
-        returning: true
+        returning: true,
+        version: false,
+        isNewRecord: false
       }
     );
 

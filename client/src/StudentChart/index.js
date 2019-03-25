@@ -151,7 +151,7 @@ this.makeTicks(chartData);
             chartData.datasets[2].labels.push(test.name)
           );
 
-          const name = this.props.oneStudent < 1 ? "Student Scores" : `${this.props.oneStudent.fname} ${this.props.oneStudent.lname} `
+          // const name = this.props.oneStudent < 1 ? "Student Scores" : `${this.props.oneStudent.fname} ${this.props.oneStudent.lname} `
     return (
       <div className="chart">
         <Line
@@ -160,7 +160,7 @@ this.makeTicks(chartData);
             maintainAspectRatio: true,
             title: {
               display: true,
-              text: `${name}`,
+              text: `Student Scores`,
               fontSize: 25,
               fontColor: "black"
             },

@@ -6,7 +6,7 @@ const ssTestRouter = express.Router();
 ssTestRouter.get("/", async (req, res) => {
   try {
     const ssTests = await SSTest.findAll({
-      rejectOnEmpty: true
+      // rejectOnEmpty: true
     });
     res.send(ssTests);
   } catch (e) {
@@ -18,8 +18,8 @@ ssTestRouter.get("/:id", async (req, res) => {
   try {
     const id = Number.parseInt(req.params.id, 10);
     const ssTest = await SSTest.findOne({
-      where: { id },
-      rejectOnEmpty: true
+      where: { id }
+      // rejectOnEmpty: true
     });
     res.send(ssTest);
   } catch (e) {
@@ -37,8 +37,11 @@ ssTestRouter.put("/:id", async (req, res) => {
       {
         where: { id },
         limit: 1,
-        rejectOnEmpty: true,
-        returning: true
+        version: false,
+        isNewRecord: false
+
+        // rejectOnEmpty: true,
+        // returning: true
       }
     );
 
@@ -77,7 +80,7 @@ ssTestRouter.get("/student/:id", async (req, res) => {
   try {
     const id = Number.parseInt(req.params.id, 10);
     const ssTests = await SSTest.findAll({
-      where: { student_id: id },
+      where: { student_id: id }
       // rejectOnEmpty: true
     });
     res.send(ssTests);

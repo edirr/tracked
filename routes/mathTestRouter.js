@@ -6,7 +6,7 @@ const mathTestRouter = express.Router();
 mathTestRouter.get("/", async (req, res) => {
   try {
     const mathTests = await MathTest.findAll({
-      rejectOnEmpty: true
+      // rejectOnEmpty: true
     });
     res.send(mathTests);
   } catch (e) {
@@ -18,8 +18,8 @@ mathTestRouter.get("/:id", async (req, res) => {
   try {
     const id = Number.parseInt(req.params.id, 10);
     const mathTest = await MathTest.findOne({
-      where: { id },
-      rejectOnEmpty: true
+      where: { id }
+      // rejectOnEmpty: true
     });
     res.send(student);
   } catch (e) {
@@ -37,8 +37,10 @@ mathTestRouter.put("/:id", async (req, res) => {
       {
         where: { id },
         limit: 1,
-        rejectOnEmpty: true,
-        returning: true
+        version: false,
+        isNewRecord: false
+        // rejectOnEmpty: true,
+        // returning: true
       }
     );
 
@@ -77,7 +79,7 @@ mathTestRouter.get("/student/:id", async (req, res) => {
   try {
     const id = Number.parseInt(req.params.id, 10);
     const mathTests = await MathTest.findAll({
-      where: { student_id: id },
+      where: { student_id: id }
       // rejectOnEmpty: true
     });
     res.send(mathTests);

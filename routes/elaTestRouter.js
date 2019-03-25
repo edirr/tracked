@@ -6,7 +6,7 @@ const elaTestRouter = express.Router();
 elaTestRouter.get("/", async (req, res) => {
   try {
     const elaTests = await ElaTest.findAll({
-      rejectOnEmpty: true
+      // rejectOnEmpty: true
     });
     res.send(elaTests);
   } catch (e) {
@@ -18,8 +18,8 @@ elaTestRouter.get("/:id", async (req, res) => {
   try {
     const id = Number.parseInt(req.params.id, 10);
     const elaTest = await ElaTest.findOne({
-      where: { id },
-      rejectOnEmpty: true
+      where: { id }
+      // rejectOnEmpty: true
     });
     res.send(elaTest);
   } catch (e) {
@@ -37,8 +37,10 @@ elaTestRouter.put("/:id", async (req, res) => {
       {
         where: { id },
         limit: 1,
-        rejectOnEmpty: true,
-        returning: true
+        version: false,
+        isNewRecord: false
+        // rejectOnEmpty: true,
+        // returning: true
       }
     );
 
@@ -77,7 +79,7 @@ elaTestRouter.get("/student/:id", async (req, res) => {
   try {
     const id = Number.parseInt(req.params.id, 10);
     const elaTests = await ElaTest.findAll({
-      where: { student_id: id },
+      where: { student_id: id }
       // rejectOnEmpty: true
     });
     res.send(elaTests);

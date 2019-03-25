@@ -188,7 +188,7 @@ class App extends Component {
     this.getStudentMathTests();
     this.getStudentElaTests();
     this.getStudentSSTests();
-    this.getOneStudent(this.state.studentId);
+    // this.getOneStudent(this.state.studentId);
   }
 
   toggleEditModal(){
